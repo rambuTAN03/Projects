@@ -43,27 +43,34 @@ void main() {
           print('First choice: ');
           String? firstResponse = stdin.readLineSync();
           _guess[0] = firstResponse!;
+          if (firstResponse.isEmpty) {
+            print("\nInvalid input, must not be a duplicate or null\n");
+            continue outerLoop;
+          }
           print('Second choice: ');
           String? secondResponse = stdin.readLineSync();
           _guess[1] = secondResponse!;
-          if (secondResponse == firstResponse) {
+          if (secondResponse == firstResponse || secondResponse.isEmpty) {
             print("\nInvalid input, must not be a duplicate or null\n");
             continue outerLoop;
           }
           print('Third choice: ');
           String? thirdResponse = stdin.readLineSync();
+          _guess[2] = thirdResponse!;
           if (thirdResponse == firstResponse ||
-              thirdResponse == secondResponse) {
+              thirdResponse == secondResponse ||
+              thirdResponse.isEmpty) {
             print("\nInvalid input, must not be a duplicate or null\n");
             continue outerLoop;
           }
-          _guess[2] = thirdResponse!;
+
           print('Fourth choice: ');
           String? fourtResponse = stdin.readLineSync();
           _guess[3] = fourtResponse!;
           if (fourtResponse == firstResponse ||
               fourtResponse == secondResponse ||
-              fourtResponse == thirdResponse) {
+              fourtResponse == thirdResponse ||
+              fourtResponse.isEmpty) {
             print("\nInvalid input, must not be a duplicate or null\n");
             continue outerLoop;
           }
